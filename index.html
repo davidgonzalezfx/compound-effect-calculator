@@ -9,7 +9,12 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="title text-center">Compund Effect Calculator by @davidgonzalezfx</h1>
+		<div class="text-center">
+			<h1 class="title">Compund Effect Calculator</h1>
+			<p>by @davidgonzalezfx</p>
+			<hr style="background-color:white">	
+		</div>
+		
 		<form>
 		  <div class="form-group row">
 		  	<div class="col-md-3"></div>
@@ -40,8 +45,6 @@
 		  	<div class="col-md-6">
 			    <label>Regular contribution</label> <br>
 			    <input type="text" class="form-control" id="regular" placeholder="Contribution" value="">
-			    <input type="radio" value="">Add before each compounding period <br>
-					<input type="radio" value=""> Add after each compounding period <br>
 				</div>
 				<div class="col-md-3"></div>
 		  </div>
@@ -69,22 +72,30 @@
 			investment = parseInt(document.getElementById('investment').value), 
 			interest = parseInt(document.getElementById('interest').value),
 			time = parseInt(document.getElementById('period').value),
+			regular = parseInt(document.getElementById('regular').value),
 			total;
 
-			console.log(investment)
-			console.log(interest)
-			console.log(time)
-
-			total = investment*(1+interest*0.01)**time
-			console.log("Total = " + total)
-
-			let newT = investment
-			for(let i=0; i<time; i++) {
-			  console.log(`${i+1} : ${newT += newT*interest*0.01}`)
+			
+			if(regular > 0) {
+				console.log("2.0")
+				let newT = investment
+				for(let i=0; i<time; i++) {
+				  //newT += 10 //make addition at the beginin
+				  console.log(`${i+1} : ${newT += newT*interest*0.01}`)
+				  newT += 10 //make addition at the end
+				}
+				console.log(`Total: ${newT}`)
+				total = newT
+			} else {
+				console.log("Normal")
+				total = investment*(1+interest*0.01)**time
+				let newT = investment
+				for(let i=0; i<time; i++) {
+				  console.log(`${i+1} : ${newT += newT*interest*0.01}`)
+				}
 			}
-
 		  
-  		document.getElementById("math").innerHTML = "$ " + newT;
+  		document.getElementById("math").innerHTML = "$ " + total.toFixed(2);
 		});
 		
 	</script>	
