@@ -41,7 +41,8 @@ function calc(){
 }
 
 function delData() {
-	document.getElementById('graph').innerHTML="";
+	const tbody = document.getElementById('tbod');
+	tbody.innerHtml = "";
 }
 
 function insertData() {
@@ -50,7 +51,7 @@ function insertData() {
 	interest = parseInt(document.getElementById('interest').value),
 	time = parseInt(document.getElementById('period').value),
 	regular = parseInt(document.getElementById('regular').value)
-	let table = document.getElementById('graph');
+	let table = document.getElementById('tbod');
 	let newT = investment;
 
 	for(let i=0; i<time; i++) {
