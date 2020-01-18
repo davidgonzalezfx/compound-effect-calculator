@@ -4,7 +4,7 @@ document.getElementById("btn").addEventListener("click", function () {
 
 document.getElementById("btn2").addEventListener("click", function(){
 	calc();
-	document.getElementById('graph').style.display = "table";
+	document.getElementById('graph').style.display = "flex";
 	delData();
 	insertData();
 })
@@ -42,7 +42,7 @@ function calc(){
 
 function delData() {
 	const tbody = document.getElementById('tbod');
-	tbody.innerHtml = "";
+	tbody.innerHTML = "";
 }
 
 function insertData() {
@@ -65,3 +65,36 @@ function insertData() {
 	}
 		
 }
+
+
+	var ctx = document.getElementById('myChart').getContext('2d');
+			var myChart = new Chart(ctx, {
+			type: 'line',
+					data: {
+						labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], // Month
+						datasets: [{
+							data: [105, 110, 115, 121, 127, 134, 140, 147, 155, 162, 171, 179, 188, 197, 207, 218, 229, 240, 252, 265, 278, 292, 307, 322 ], // Equity
+							backgroundColor: 'rgba(9,46,80,1)',
+							borderColor: 'rgb(255,255,255)',
+						}]
+					},
+					options: {
+						responsive: true,
+						legend: {display: false},
+						scales: {
+							xAxes: [{
+								gridLines: { color: "#6C757D"}
+							}],
+							yAxes: [{
+								gridLines: { color: "#6C757D" }
+							}]
+						},
+						tooltips: {
+							mode: 'point',
+							bodyFontSize: 15,
+							titleFontSize: 15,
+							borderColor: 'rgb(0,123,255)',
+							borderWidth: 2,
+						}	
+					}
+	});

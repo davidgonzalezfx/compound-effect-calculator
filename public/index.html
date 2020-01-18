@@ -63,23 +63,30 @@
 			<h4 id="math"></h4>	
 		</div>
 		<br>
-		<table id="graph" style="background-color: white;" class="table text-center table-hover table-striped">
-			<thead class="">
-				<tr>
-					<th>Month</th>
-					<th>Initial</th>
-					<th>%</th>
-					<th>Total</th>
-				</tr>
-			</thead>
-			<tbody id="tbod">
-				
-			</tbody>
-		</table>
+		<div class="row" id="graph">
+			<canvas id="myChart" class="col-md-6" width="50" height="50"></canvas>
+			<table style="background-color: white;" class="table text-center table-hover table-striped col-md-6">
+				<thead class="">
+					<tr>
+						<th>Month</th>
+						<th>Initial</th>
+						<th>%</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody id="tbod">
+			
+				</tbody>
+			</table>
+		</div>
+		
+		
+		
 
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
 	<script src="main.js"></script>	
 </body>
 </html>

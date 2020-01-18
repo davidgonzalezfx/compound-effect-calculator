@@ -21,7 +21,7 @@ form {
 }
 
 #graph {
-	display: none;
+	display: flex;
 }
 
 @media (max-width: 767.98px) {
