@@ -1,12 +1,22 @@
+let myDataSet = [];
 document.getElementById("btn").addEventListener("click", function () {
 	calc();
 });
 
 document.getElementById("btn2").addEventListener("click", function(){
+	myDataSet = new Array();
+	myChart.data.labels = [];
+	myChart.data.datasets[0].data = [];
+	myChart.update();
 	calc();
 	document.getElementById('graph').style.display = "flex";
 	delData();
-	insertData();
+	insertData();	
+	for (let i = 0; i < myDataSet.length; i++) {
+		myChart.data.labels[i] = i + 1;
+		myChart.data.datasets[0].data[i] = myDataSet[i];
+		myChart.update();
+	}
 })
 
 function calc(){
@@ -23,20 +33,20 @@ function calc(){
 		let newT = investment
 		for(let i=0; i<time; i++) {
 		  newT += regular //make addition at the beginin
-		  console.log(`${i+1} : ${newT += newT*interest*0.01}`)
+			console.log(`${i+1} : ${newT += newT*interest*0.01}`)
+			myDataSet.push(newT);
 		  //newT += regular //make addition at the end
 		}
-		console.log(`Total: ${newT}`)
 		total = newT
 	} else {
 		console.log("Normal")
 		total = investment*(1+interest*0.01)**time
 		let newT = investment
 		for(let i=0; i<time; i++) {
-		  console.log(`${i+1} : ${newT += newT*interest*0.01}`)
+			console.log(`${i+1} : ${newT += newT*interest*0.01}`)
+			myDataSet.push(newT);
 		}
 	}
-  
 	document.getElementById("math").innerHTML = "$ " + total.toFixed(2);
 }
 
@@ -71,9 +81,7 @@ function insertData() {
 			var myChart = new Chart(ctx, {
 			type: 'line',
 					data: {
-						labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], // Month
 						datasets: [{
-							data: [105, 110, 115, 121, 127, 134, 140, 147, 155, 162, 171, 179, 188, 197, 207, 218, 229, 240, 252, 265, 278, 292, 307, 322 ], // Equity
 							backgroundColor: 'rgba(9,46,80,1)',
 							borderColor: 'rgb(255,255,255)',
 						}]
@@ -98,3 +106,6 @@ function insertData() {
 						}	
 					}
 	});
+
+	
+	
